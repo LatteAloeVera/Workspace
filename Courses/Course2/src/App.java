@@ -36,5 +36,21 @@ public class App {
         // biggestNumber = (biggestNumber < temp) ? temp : biggestNumber;
 
         // System.out.println("Biggest ==> " + biggestNumber);
+
+
+        /*
+                Let user enter 3 numbers and then print out numbers in descending order.
+                Enter num: 9
+                Enter num: -8
+                Enter num: 6
+
+                Output: 9 > 6 > -8
+        */
+
+       /*
+
+                Teach me how switch-case works in java. (Extended Switch-Case?)
+       */
+
     }
 }
