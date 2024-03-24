@@ -1,4 +1,7 @@
+import java.lang.classfile.instruction.SwitchCase;
 import java.util.Scanner;
+
+import javax.sql.rowset.serial.SerialStruct;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -56,25 +59,64 @@ public class App {
          * it to.
          * 
          * switch (itemCode) {
-         * case 001 :
+         * case 1 :
          * System.out.println("It's a laptop!");
          * break;
-         * case 002 :
+         * case 2 :
          * System.out.println("It's a desktop!");
          * break;
          */
 
-        /*
-         * We can also use "yield", which makes switch-case return a value
-         * 
-         * String text = switch (itemCode) {
-         * case 001 :
-         * yield "It's a laptop!";
-         * case 002 :
-         * yield "It's a desktop!";}
-         * 
-         * 
-         */
+        // Let user enter a number between 1-7 and print the corresponding day of week
+        // by given number.
 
+        // Scanner scan = new Scanner(System.in);
+
+        // System.out.print("Enter a number (1-7): ");
+        // int days = scan.nextInt();
+        // scan.nextLine();
+
+        // switch (days) {
+        // case 1:
+        // System.out.println("Today is monday!");
+        // break;
+        // case 2:
+        // System.out.println("Today is tuesday!");
+        // break;
+        // case 3:
+        // System.out.println("Today is wednesday!");
+        // break;
+        // case 4:
+        // System.out.println("Today is thursday!");
+        // break;
+        // case 5:
+        // System.out.println("Today is friday!");
+        // break;
+        // case 6:
+        // System.out.println("Today is saturday!");
+        // break;
+        // case 7:
+        // System.out.println("Today is sunday!");
+        // break;
+        // default:
+        // System.out.println("Not a valid number!");
+        // break;
+        // }
+
+        // Let user enter a number between 1-4 then print corresponding season of year
+
+        // Scanner scan = new Scanner(System.in);
+
+        // System.out.print("Enter a number (1-4): ");
+        // int seasons = scan.nextInt();
+        // scan.nextLine();
+
+        // switch (seasons) {
+        //     case 1 -> System.out.println("Winter");
+        //     case 2 -> System.out.println("Spring");
+        //     case 3 -> System.out.println("Summer");
+        //     case 4 -> System.out.println("Autumn");
+        //     default -> System.out.println("Invalid number!");
+        // }
     }
 }
