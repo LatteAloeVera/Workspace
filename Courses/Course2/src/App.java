@@ -12,9 +12,9 @@ public class App {
         // scan.nextLine();
 
         // if (number % 2 == 1) {
-        //     System.out.println("odd");
+        // System.out.println("odd");
         // } else {
-        //     System.out.println("even");
+        // System.out.println("even");
         // }
 
         // Let user enter 3 numbers and then print out the greatest one.
@@ -37,20 +37,44 @@ public class App {
 
         // System.out.println("Biggest ==> " + biggestNumber);
 
+        /*
+         * Let user enter 3 numbers and then print out numbers in descending order.
+         * Enter num: 9
+         * Enter num: -8
+         * Enter num: 6
+         * 
+         * Output: 9 > 6 > -8
+         */
 
         /*
-                Let user enter 3 numbers and then print out numbers in descending order.
-                Enter num: 9
-                Enter num: -8
-                Enter num: 6
+         * 
+         * Teach me how switch-case works in java. (Extended Switch-Case?)
+         */
 
-                Output: 9 > 6 > -8
-        */
+        /*
+         * Switch-case makes us so we can choose a spesific action with a code we give
+         * it to.
+         * 
+         * switch (itemCode) {
+         * case 001 :
+         * System.out.println("It's a laptop!");
+         * break;
+         * case 002 :
+         * System.out.println("It's a desktop!");
+         * break;
+         */
 
-       /*
-
-                Teach me how switch-case works in java. (Extended Switch-Case?)
-       */
+        /*
+         * We can also use "yield", which makes switch-case return a value
+         * 
+         * String text = switch (itemCode) {
+         * case 001 :
+         * yield "It's a laptop!";
+         * case 002 :
+         * yield "It's a desktop!";}
+         * 
+         * 
+         */
 
     }
 }

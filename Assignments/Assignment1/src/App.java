@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -25,6 +24,8 @@ public class App {
         System.out.print("Enter num: ");
         int num3 = scan.nextInt();
         scan.nextLine();
+
+        scan.close();
 
         System.out.println();
         System.out.println();
