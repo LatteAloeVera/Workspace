@@ -25,33 +25,28 @@ public class App {
         int num3 = scan.nextInt();
         scan.nextLine();
 
-        scan.close();
-
-        System.out.println();
-        System.out.println();
-
-        int biggestNum = num1; // first we find the biggest number between the numbers..
-        int middleNum;
-        int smallestNum;
-
-        if (biggestNum < num2) {
-            biggestNum = num2;
+        
+        if (num1 > num2 && num1 > num3) {
+            if (num2 > num3) {
+                System.out.println(num1 + " > " + num2 + " > " + num3);
+            } else {
+                System.out.println(num1 + " > " + num3 + " > " + num2);
+            }
         }
-
-        if (biggestNum < num3) {
-            biggestNum = num3;
+        else if (num2 > num1 && num2 > num3) {
+            if (num1 > num3) {
+                System.out.println(num2 + " > " + num1 + " > " + num3);
+            } else {
+                System.out.println(num2 + " > " + num3 + " > " + num1);
+            }
         }
-
-        // then we sort the rest
-        if (num2 < num3) {
-            middleNum = num3;
-            smallestNum = num2;
-        } else {
-            middleNum = num2;
-            smallestNum = num3;
+        else {
+            if (num1 > num2) {
+                System.out.println(num3 + " > " + num1 + " > " + num2);
+            }
+            else {
+                System.out.println(num3 + " > " + num2 + " > " + num1);
+            }
         }
-
-        // at the end, we print it.
-        System.out.println(biggestNum + " > " + middleNum + " > " + smallestNum);
     }
 }
