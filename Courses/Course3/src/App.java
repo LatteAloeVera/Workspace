@@ -142,21 +142,52 @@ public class App {
          */
 
         // for (int i = 1; i <= 5; i++) {
-        //     for (int j = 0; j < 5 - i; j++) {
-        //         System.out.print("  ");
-        //     }
-        //     for (int k = i; k <= (2 * i) - 1; k++) {
-        //         System.out.print(k + " ");
-        //     }
-        //     for (int t = (2 * i) - 2; t >= i; t--) {
-        //         System.out.print(t + " ");
-        //     }
+        // for (int j = 0; j < 5 - i; j++) {
+        // System.out.print(" ");
+        // }
+        // for (int k = i; k <= (2 * i) - 1; k++) {
+        // System.out.print(k + " ");
+        // }
+        // for (int t = (2 * i) - 2; t >= i; t--) {
+        // System.out.print(t + " ");
+        // }
 
-        //     System.out.println();
+        // System.out.println();
         // }
 
         /*
-            While, Do-While, Single Dimensional Arrays
-        */
+         * While, Do-While, Single Dimensional Arrays
+         */
+
+        /*
+         * While, loops a block of code as long as a spesific condition is true.
+         *
+         * while (condition){
+         * //code goes here
+         * 
+         * }
+         * 
+         */
+
+        /*
+         * Do - While code works similar to while, but even if spesific condition is
+         * false, code block works for atleast once.
+         * 
+         * int i = 0;
+         * do {
+         * //code goes here
+         * 
+         * }
+         * while (condition);
+         * 
+         */
+
+        /*
+         * Single Dimensional Arrays
+         * 
+         * 
+         * 
+         */
+
     }
 }
