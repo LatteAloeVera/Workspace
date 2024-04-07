@@ -1,0 +1,15 @@
+{
+    "java.project.sourcePaths": [
+        "src"
+    ],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ],
+    "vscode-pets.theme": "forest",
+    "vscode-pets.position": "explorer",
+    "vscode-pets.petColor": "black",
+    "vscode-pets.petSize": "small",
+    "vscode-pets.petType": "cat",
+    "vscode-pets.throwBallWithMouse": true
+}
