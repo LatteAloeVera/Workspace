@@ -2,7 +2,7 @@ import java.time.temporal.Temporal;
 
 public class Q4 {
     public static void main(String[] args) {
-        System.out.println(countVowels("Hello World!"));
+        System.out.println(countVowels("Ali topu tut"));
     }
 
 
