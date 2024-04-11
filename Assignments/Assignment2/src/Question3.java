@@ -12,33 +12,18 @@ public class Question3 {
         int num = scan.nextInt();
         scan.nextLine();
         scan.close();
-
-        System.out.println();
         System.out.println("Reversed version of the number is: " + reverse(num));
-        
     }
-
-
 
     public static int reverse(int num){
         int reversedNum = 0;
-        boolean isNegative = false;
 
-        if(num < 0)
-        isNegative = true;
-        
         do
         {
             reversedNum = (reversedNum * 10 )+ (num % 10);
             num /= 10;
         }while(num != 0);
 
-
-        if(isNegative)
-        return reversedNum * -1;
-        
-
         return reversedNum;
     }
-
 }
