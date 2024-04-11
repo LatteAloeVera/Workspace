@@ -12,6 +12,7 @@ public class Question2 {
         Scanner scan = new Scanner(System.in);
         System.out.print("Please input a string:");
         String input = scan.nextLine();
+        scan.close();
         
         System.out.println();
         System.out.println("\" " + input + " \"");

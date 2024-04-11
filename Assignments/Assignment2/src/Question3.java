@@ -11,6 +11,7 @@ public class Question3 {
         
         int num = scan.nextInt();
         scan.nextLine();
+        scan.close();
 
         System.out.println();
         System.out.println("Reversed version of the number is: " + reverse(num));
@@ -18,7 +19,7 @@ public class Question3 {
     }
 
 
-    
+
     public static int reverse(int num){
         int reversedNum = 0;
         boolean isNegative = false;

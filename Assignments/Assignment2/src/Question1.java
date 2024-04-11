@@ -22,6 +22,7 @@ public class Question1 {
             array[i] = scan.nextInt();
             scan.nextLine();
         }
+        scan.close();
 
         findDuplicates(array);
         
