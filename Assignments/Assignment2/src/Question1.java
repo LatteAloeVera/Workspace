@@ -1,5 +1,11 @@
 import java.util.Scanner;
 
+
+/*
+ * Question1: Given an array of integers, some elements appears twice and others appear once. Write a function that finds all the elements that appear
+ * twice in this array. You should aim to have an O(n) time complexity and O(1) space complexity, without modifying the input array.
+ */
+
 public class Question1 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
