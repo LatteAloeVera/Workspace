@@ -5,6 +5,7 @@ public interface Animal {
     //    this.age = age;
     //}
     //Interfaces cant have constructors
+    //
 
     public void animalSound();
 
