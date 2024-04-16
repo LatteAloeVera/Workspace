@@ -24,4 +24,11 @@ public class Pig implements Animal {
         System.out.println("Pig is eating " + food + "...");
     }
 
+    public void viewDetails() {
+        System.out.println("*******************************************************");
+        System.out.println("This pig is " + age + "years old.");
+        System.out.println("This pig's specie is " + species);
+        System.out.println("*******************************************************");
+    }
+
 }

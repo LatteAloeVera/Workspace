@@ -13,4 +13,6 @@ public interface Animal {
     public void run();
 
     public void eat(String food);
+
+    public void viewDetails();
 }

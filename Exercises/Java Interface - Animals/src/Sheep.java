@@ -1,7 +1,7 @@
 public class Sheep implements Animal {
-    private String species;
-    private int age;
-    private int woolAmountPerc;
+    protected String species;
+    protected int age;
+    protected int woolAmountPerc;
 
     public Sheep(String species, int age, int woolAmountPerc) {
         this.species = species;
@@ -39,6 +39,14 @@ public class Sheep implements Animal {
         if (woolAmountPerc > 100) {
             System.out.println("Sheep's wool is ready to be cut!");
         }
+    }
+    
+    public void viewDetails() {
+        System.out.println("*******************************************************");
+        System.out.println("This sheep is " + age + "years old.");
+        System.out.println("This sheep's specie is " + species);
+        System.out.println("This sheep has %" + woolAmountPerc + " amount of wool." );
+        System.out.println("*******************************************************");
     }
 
 }
