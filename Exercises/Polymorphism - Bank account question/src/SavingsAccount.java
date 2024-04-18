@@ -9,9 +9,13 @@ public class SavingsAccount extends BankAccount {
             double interest = (this.balance / 100) * 3;
             this.balance += amount + interest ;
 
-            System.out.println(amount + " deposited, " + interest + " interest added!");
+            System.out.println("$" + amount + " deposited, $" + interest + " interest added!");
+            
+            System.out.println("New balance is = $" + balance);
+            System.out.println();
         } else {
             System.out.println("Wrong password!");
+            System.out.println();
         }
     }
 
