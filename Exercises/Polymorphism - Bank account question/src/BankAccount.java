@@ -30,7 +30,7 @@ public class BankAccount {
     public void withdraw(double amount, String usrPassword) {
         if (usrPassword == this.usrPassword && balance >= amount) {
             this.balance -= amount;
-            System.out.println(amount + " withdrawn!");
+            System.out.println("$" + amount + " withdrawn!");
 
             System.out.println("Remaining balance is = $" + balance);
             System.out.println();

@@ -8,7 +8,7 @@ public class CheckingAccount extends BankAccount {
     public void withdraw(double amount, String usrPassword) {
         if (usrPassword == this.usrPassword && balance >= amount) {
             this.balance -= amount;
-            System.out.println(amount + " withdrawn!");
+            System.out.println("$" + amount + " withdrawn!");
 
             System.out.println("Remaining balance is = $" + balance);
             System.out.println();
@@ -16,7 +16,7 @@ public class CheckingAccount extends BankAccount {
         } else if (usrPassword == this.usrPassword && balance + 100 >= amount) {
             System.out.println("Not enough balance, going to negative...");
             this.balance -= amount + 10;
-            System.out.println(amount + " withdrawn! $10 penalty added.");
+            System.out.println("$" + amount + " withdrawn! $10 penalty added.");
 
             System.out.println("New balance is = $" + balance);
             System.out.println();
