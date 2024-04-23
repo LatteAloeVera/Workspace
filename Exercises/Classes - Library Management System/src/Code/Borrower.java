@@ -15,6 +15,7 @@ public class Borrower extends Person {
     public String getBorrowerId() {
         return borrowerId;
     }
+
     public void setBorrowerId(String borrowerId) {
         this.borrowerId = borrowerId;
     }
@@ -22,9 +23,8 @@ public class Borrower extends Person {
     public ArrayList<String> getBorrowedBooks() {
         return borrowedBooks;
     }
+
     public void setBorrowedBooks(ArrayList<String> borrowedBooks) {
         this.borrowedBooks = borrowedBooks;
     }
-
-    
 }
