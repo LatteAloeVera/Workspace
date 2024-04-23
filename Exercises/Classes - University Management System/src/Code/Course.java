@@ -11,7 +11,8 @@ public class Course {
         this.title = title;
         this.credits = credits;
         this.instructorId = null;
-        
+    
+        UniversityManagementSystem.courseMap.put(this.courseId, this);
     }
 
     public String getCourseId() {

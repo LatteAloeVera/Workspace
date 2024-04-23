@@ -7,6 +7,12 @@ public class UniversityManagementSystem {
     public static HashMap<String, Student> studentMap = new HashMap<>();
     public static HashMap<String, Course> courseMap = new HashMap<>();
 
+    UniversityManagementSystem() {
+        instructorMap = new HashMap<String, Instructor>();
+        studentMap = new HashMap<String, Student>();
+        courseMap = new HashMap<String, Course>();
+    }
+
     public HashMap<String, Instructor> getInstructorMap() {
         return instructorMap;
     }
@@ -17,12 +23,6 @@ public class UniversityManagementSystem {
 
     public HashMap<String, Course> getCourseMap() {
         return courseMap;
-    }
-
-    UniversityManagementSystem() {
-        instructorMap = new HashMap<String, Instructor>();
-        studentMap = new HashMap<String, Student>();
-        courseMap = new HashMap<String, Course>();
     }
 
     public void assignInstructorToCourse(String insturctorId, String courseId) {
@@ -49,5 +49,4 @@ public class UniversityManagementSystem {
             }
         }
     }
-
 }

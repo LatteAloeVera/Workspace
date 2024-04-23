@@ -10,6 +10,8 @@ public class Student extends Entity {
         super(id, name);
         this.creditsEarned = 0;
         this.enrolledCourses = new ArrayList<String>();
+
+        UniversityManagementSystem.studentMap.put(this.id, this);
     }
 
     public ArrayList<String> getEnrolledCourses() {
@@ -20,7 +22,7 @@ public class Student extends Entity {
         if (!enrolledCourses.contains(course.getCourseId())) {
             enrolledCourses.add(course.getCourseId());
             this.creditsEarned += course.getCredits();
-            System.out.println("Added new course for " + this.name + "!");
+            System.out.print("Added new course for " + this.name + "!" + "\n");
         } else {
             System.out.println("This student already has this lesson!");
         }
@@ -42,7 +44,7 @@ public class Student extends Entity {
 
         // Getting total credits
         for (Course course : UniversityManagementSystem.courseMap.values()) {
-            totalCredits = +course.getCredits();
+            totalCredits += course.getCredits();
         }
         progress = this.creditsEarned / totalCredits;
 
@@ -50,13 +52,14 @@ public class Student extends Entity {
     }
 
     public void displayDetails() {
-        System.out.printf("ID:-%8s, Name:-%15s, Earned Credits:-%5\n",
-                this.id, this.name, this.creditsEarned);
-        System.out.print("Enrolled course ID's: ");
-        for (String enrolledCourseID : enrolledCourses) {
-            System.out.print(enrolledCourseID + " ");
-        }
-        System.out.println();
+        System.out.print("Student ID: " + this.id + "\n");
+        System.out.print("Student Name: " + this.name + "\n");
+        System.out.print("Credits Earned: " + this.creditsEarned + "\n");
+        System.out.print("Enrolled course ID's: " + this.enrolledCourses);
+    }
+
+    public int getCreditsEarned() {
+        return creditsEarned;
     }
 
 }
