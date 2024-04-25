@@ -25,7 +25,7 @@ public class Library {
         System.out.println("----------------------------------------------------");
     }
 
-    public static class Book {
+    static class Book {
         protected String title;
         protected int isbn;
 
@@ -45,6 +45,5 @@ public class Library {
         public void displayDetails() {
             System.out.println("Title: " + this.getTitle() + ", ISBN: " + this.getIsbn());
         }
-
     }
 }
