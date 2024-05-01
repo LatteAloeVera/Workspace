@@ -9,7 +9,7 @@ public class Logger {
     }
     
     public static Logger getInstance() {
-        if (Logger.instance == null) {
+        if (instance == null) {
             instance = new Logger();
         }
 
@@ -17,8 +17,7 @@ public class Logger {
     }
     
     public void log(String message, MessageFormatter formatter) {
-        
-        
+        System.out.println(formatter.format(message));
     }
 
 }
