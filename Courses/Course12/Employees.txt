@@ -1,0 +1,3 @@
+Ayberk, Sevgi, 20, Computer Engineering
+Hasan, Mahmut, 25, Electronics
+Ayberk, Saygi, 24, Software Engineering
