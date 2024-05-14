@@ -1,5 +1,9 @@
 package Code;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Customer {
     private String customerID;
     private String name;
@@ -23,8 +27,11 @@ public class Customer {
 
     public void closeAccount() {
         if (this.account != null) {
+
+            File file = new File("src\\Accounts\\" + this.account.getAccountNumber() + ".txt");
+            file.delete();
+
             this.account = null;
-            // TODO: Delete from the accounts file as well...
         } else {
             System.out.println("There is no account to delete!");
         }
@@ -35,7 +42,19 @@ public class Customer {
         // if it exists, delete it and add again.
         // if it doesnt, just add.
 
+        File file = new File("src\\Customers\\" + this.customerID + ".txt");
         
+        try {
+            file.createNewFile();
+            FileWriter fWriter = new FileWriter(file);
+            fWriter.write(this.customerID + "," + this.name + "," + this.account.getAccountNumber());
+            fWriter.close();
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+
     }
 
     public String getAccountDetails() {
@@ -53,4 +72,5 @@ public class Customer {
     public Account getAccount() {
         return account;
     }
+
 }

@@ -1,5 +1,9 @@
 package Code;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Transaction {
     private String transactionID;
     private String accountNumber;
@@ -18,6 +22,7 @@ public class Transaction {
             Bank.getInstance().getCustomerByID(accountNumber).getAccount().withdraw(amount);
             this.saveTransaction();
         } else if (this.transactionType.toLowerCase().equals("deposit")) {
+            // TODO: Account number yerine customerID vermen lazım, bugu hallet
             Bank.getInstance().getCustomerByID(accountNumber).getAccount().deposit(amount);
             this.saveTransaction();
         } else {
@@ -26,7 +31,19 @@ public class Transaction {
     }
 
     public void saveTransaction() {
-        // TODO: if transaction doesn't exists, add it to the file.
+        File file = new File("src\\Transactions\\" + this.transactionID + ".txt");
+
+        try {
+            file.createNewFile();
+            FileWriter writer = new FileWriter(file);
+            writer.write(
+                    this.transactionID + "," + this.accountNumber + "," + this.amount + "," + this.transactionType);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Bank.getInstance().getCustomerByID(accountNumber).getAccount().saveAccount();
     }
 
 }

@@ -53,8 +53,7 @@ public class Account {
         try {
             file.createNewFile();
             FileWriter writer = new FileWriter(file);
-            String info = this.accountNumber + "," + this.balance;
-            writer.write(info);
+            writer.write(this.accountNumber + "," + this.balance);
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
