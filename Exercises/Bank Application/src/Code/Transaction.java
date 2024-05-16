@@ -19,11 +19,13 @@ public class Transaction {
 
     public void execute() {
         if (this.transactionType.toLowerCase().equals("withdraw")) {
-            Bank.getInstance().getCustomerByID(accountNumber).getAccount().withdraw(amount);
+            Bank.getInstance().getCustomerByAccountNo(accountNumber).getAccount().withdraw(amount);
             this.saveTransaction();
         } else if (this.transactionType.toLowerCase().equals("deposit")) {
             // TODO: Account number yerine customerID vermen lazım, bugu hallet
-            Bank.getInstance().getCustomerByID(accountNumber).getAccount().deposit(amount);
+            Bank bank = Bank.getInstance();
+            Customer customer = bank.getCustomerByAccountNo(accountNumber);
+            customer.getAccount().deposit(amount);
             this.saveTransaction();
         } else {
             System.out.println("Wrong transaction type!");
@@ -42,8 +44,7 @@ public class Transaction {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        Bank.getInstance().getCustomerByID(accountNumber).getAccount().saveAccount();
+        Bank.getInstance().getCustomerByAccountNo(accountNumber).getAccount().saveAccount();
     }
 
 }

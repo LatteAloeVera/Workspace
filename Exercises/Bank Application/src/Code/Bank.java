@@ -43,13 +43,24 @@ public class Bank {
         }
     }
 
-    public Customer getCustomerByID(String CustomerID) {
+    // public Customer getCustomerByID(String CustomerID) {
+    // for (Customer customer : customerList) {
+    // if (customer.getCustomerID().equals(CustomerID)) {
+    // return customer;
+    // }
+    // }
+    // System.out.println("Couldn't find customer by ID!");
+    // return null;
+    // }
+
+    public Customer getCustomerByAccountNo(String accountNumber) {
         for (Customer customer : customerList) {
-            if (customer.getCustomerID().equals(CustomerID)) {
+            if (customer.getAccount().getAccountNumber().equals(accountNumber)) {
                 return customer;
             }
         }
-        System.out.println("Couldn't find customer by ID!");
+
+        System.out.println("Couldn't find customer by account number!");
         return null;
     }
 
