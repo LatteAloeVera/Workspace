@@ -43,15 +43,15 @@ public class Bank {
         }
     }
 
-    // public Customer getCustomerByID(String CustomerID) {
-    // for (Customer customer : customerList) {
-    // if (customer.getCustomerID().equals(CustomerID)) {
-    // return customer;
-    // }
-    // }
-    // System.out.println("Couldn't find customer by ID!");
-    // return null;
-    // }
+    public Customer getCustomerByID(String CustomerID) {
+        for (Customer customer : customerList) {
+            if (customer.getCustomerID().equals(CustomerID)) {
+                return customer;
+            }
+        }
+        System.out.println("Couldn't find customer by ID!");
+        return null;
+    }
 
     public Customer getCustomerByAccountNo(String accountNumber) {
         for (Customer customer : customerList) {
@@ -66,6 +66,10 @@ public class Bank {
 
     public void performTransaction(Transaction transaction) {
         transaction.execute();
+    }
+
+    protected List<Customer> getCustomerList() {
+        return customerList;
     }
 
 }

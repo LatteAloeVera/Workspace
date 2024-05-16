@@ -22,7 +22,6 @@ public class Transaction {
             Bank.getInstance().getCustomerByAccountNo(accountNumber).getAccount().withdraw(amount);
             this.saveTransaction();
         } else if (this.transactionType.toLowerCase().equals("deposit")) {
-            // TODO: Account number yerine customerID vermen lazım, bugu hallet
             Bank bank = Bank.getInstance();
             Customer customer = bank.getCustomerByAccountNo(accountNumber);
             customer.getAccount().deposit(amount);
@@ -44,7 +43,9 @@ public class Transaction {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Bank.getInstance().getCustomerByAccountNo(accountNumber).getAccount().saveAccount();
+        Customer customer = Bank.getInstance().getCustomerByAccountNo(accountNumber);
+        customer.getAccount().saveAccount();
+        customer.updateCustomerDetails();
     }
 
 }
