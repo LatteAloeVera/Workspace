@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import Exceptions.NegativeAmountException;
+import Exceptions.NotEnoughBalanceException;
+
 public class Transaction {
     private String transactionID;
     private String accountNumber;
@@ -17,7 +20,7 @@ public class Transaction {
         this.transactionType = transactionType;
     }
 
-    public void execute() {
+    public void execute() throws NegativeAmountException, NotEnoughBalanceException {
         if (this.transactionType.toLowerCase().equals("withdraw")) {
             Bank.getInstance().getCustomerByAccountNo(accountNumber).getAccount().withdraw(amount);
             this.saveTransaction();

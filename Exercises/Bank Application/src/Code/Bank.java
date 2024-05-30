@@ -3,6 +3,9 @@ package Code;
 import java.util.ArrayList;
 import java.util.List;
 
+import Exceptions.NegativeAmountException;
+import Exceptions.NotEnoughBalanceException;
+
 public class Bank {
     private static Bank instance = null;
     private List<Customer> customerList;
@@ -35,6 +38,7 @@ public class Bank {
                 customerList.remove(customer);
                 isRemoved = true;
                 System.out.println("Removed this customer.");
+                return;
             }
         }
 
@@ -65,7 +69,11 @@ public class Bank {
     }
 
     public void performTransaction(Transaction transaction) {
-        transaction.execute();
+        try {
+            transaction.execute();
+        } catch (NegativeAmountException | NotEnoughBalanceException e) {
+            e.printStackTrace();
+        }
     }
 
     protected List<Customer> getCustomerList() {
