@@ -1,23 +1,13 @@
 package com.example.library_management_system.Model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
-
 @Entity
-@Table(name = "authors")  
+@Table(name = "authors") // Good practice to name tables explicitly
 public class Author {
+
     @Id
-    @OneToMany(mappedBy = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -25,26 +15,39 @@ public class Author {
     @Column(nullable = false)
     private String name;
 
-    @Column
+    @NotBlank(message = "Nationality is mandatory")
+    @Column(nullable = false)
     private String nationality;
+
+    public Author() {
+    }
+
+    public Author(String name, String nationality) {
+        this.name = name;
+        this.nationality = nationality;
+    }
+
+    public Long getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getNationality() {
         return nationality;
     }
 
-    public void setNationality(String nationality) {
-        this.nationality = nationality;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getId() {
-        return id;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
     }
 }

@@ -1,21 +1,15 @@
 package com.example.library_management_system.Model;
 
-import java.util.Date;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "books")
 public class Book {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -28,56 +22,62 @@ public class Book {
     @Column(nullable = false)
     private String category;
 
-    @PastOrPresent // making sure the given time is valid
-    @Column
-    private Date publicationDate;
-
+    @NotNull(message = "Publication date is mandatory")
+    @PastOrPresent(message = "Publication date cannot be in the future")
+    @Column(nullable = false)
+    private LocalDate publicationDate;
 
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
-    private Long authorId;
+    private Author author;  // Renamed from 'authorId' to 'author' for clarity
 
     public Book() {
-
     }
 
-    public Book(String title, String category, Date publicationDate, Long authorId) {
+    public Book(String title, String category, LocalDate publicationDate, Author author) {
         this.title = title;
         this.category = category;
         this.publicationDate = publicationDate;
-        this.authorId = authorId;
+        this.author = author;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getCategory() {
         return category;
+    }
+
+    public LocalDate getPublicationDate() {
+        return publicationDate;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setCategory(String category) {
         this.category = category;
     }
 
-    public Date getPublicationDate() {
-        return publicationDate;
-    }
-
-    public void setPublicationDate(Date publicationDate) {
+    public void setPublicationDate(LocalDate publicationDate) {
         this.publicationDate = publicationDate;
     }
 
-    public Long getAuthorId() {
-        return authorId;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
-
-    public void setAuthorId(Long authorId) {
-        this.authorId = authorId;
-    }
-
 }
