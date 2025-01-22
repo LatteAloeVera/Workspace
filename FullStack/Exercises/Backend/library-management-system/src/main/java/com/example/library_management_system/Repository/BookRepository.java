@@ -10,14 +10,17 @@ import java.util.Optional;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
 
-    // Partial match on title
+    // Partial match on title (case-insensitive)
     List<Book> findByTitleContainingIgnoreCase(String title);
 
-    // Exact match on title
+    // Exact match on title (case-insensitive)
     Optional<Book> findByTitleIgnoreCase(String title);
 
+    // Partial match on title (case-insensitive)
+    List<Book> findByCategoryContainingIgnoreCase(String title);
+
     // Exact match on category (case-insensitive)
-    List<Book> findByCategoryIgnoreCase(String category);
+    Optional<Book> findByCategoryIgnoreCase(String category);
 
     // Duplicate check - same title + same author
     Optional<Book> findByTitleIgnoreCaseAndAuthor(String title, Author author);

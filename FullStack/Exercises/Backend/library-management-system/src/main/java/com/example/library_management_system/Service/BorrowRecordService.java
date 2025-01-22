@@ -18,7 +18,7 @@ public class BorrowRecordService {
     }
 
     public BorrowRecord borrowBook(BorrowRecord record) {
-        List<BorrowRecord> borrowRecords = getAllBorrowRecords();
-        
+        // Checking if the book is avaible to borrow
+        // borrowRecordRepository.findByBookTitleContainingIgnoreCase(record.getBook().getTitle())
     }
 }

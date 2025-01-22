@@ -57,4 +57,61 @@ public class BookService {
         bookRepository.delete(book);
     }
 
+    public List<Book> searchBooks(String title, String authorName, String category) {
+        // if all parameters are provided:
+        if (title != null && !title.isEmpty() && authorName != null && !authorName.isEmpty()
+                && category != null && !category.isBlank()) {
+            return bookRepository.findByTitleContainingIgnoreCase(title)
+                    .stream()
+                    .filter(book -> book.getAuthor().getName().equalsIgnoreCase(authorName))
+                    .filter(book -> book.getCategory().equalsIgnoreCase(category))
+                    .toList();
+        }
+
+        // if both title and author provided:
+        if (title != null && !title.isEmpty() && authorName != null && !authorName.isEmpty()) {
+            return bookRepository.findByTitleContainingIgnoreCase(title)
+                    .stream()
+                    .filter(book -> book.getAuthor().getName().equalsIgnoreCase(authorName))
+                    .toList();
+        }
+
+        // if both author and category provided:
+        if (authorName != null && !authorName.isEmpty() && category != null && !category.isBlank()) {
+            return bookRepository.findByCategoryContainingIgnoreCase(category)
+                    .stream()
+                    .filter(book -> book.getAuthor().getName().equalsIgnoreCase(authorName))
+                    .toList();
+        }
+
+        // if both title and category provided:
+        if (title != null && !title.isEmpty() && category != null && !category.isBlank()) {
+            return bookRepository.findByTitleContainingIgnoreCase(title)
+                    .stream()
+                    .filter(book -> book.getCategory().equalsIgnoreCase(category))
+                    .toList();
+        }
+
+        // if only title provided:
+        if (title != null && !title.isEmpty()) {
+            return bookRepository.findByTitleContainingIgnoreCase(title);
+        }
+
+        // if only author provided:
+        if (authorName != null && !authorName.isEmpty()) {
+            return bookRepository.findAll()
+                    .stream()
+                    .filter(book -> book.getAuthor().getName().equalsIgnoreCase(authorName))
+                    .toList();
+        }
+
+        // if only category provided:
+        if (category != null && !category.isBlank()) {
+            return bookRepository.findByCategoryContainingIgnoreCase(category);
+        }
+
+        // if nothing given:
+        return bookRepository.findAll();
+
+    }
 }
