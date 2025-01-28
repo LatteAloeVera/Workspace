@@ -3,6 +3,7 @@ package com.example.library_management_system.Service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import com.example.library_management_system.Exceptions.DuplicateEntryException;
@@ -15,8 +16,8 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+    public List<Book> getAllBooks(PageRequest pageable) {
+        return bookRepository.findAll(pageable).toList();
     }
 
     public Book getBookById(Long id) {

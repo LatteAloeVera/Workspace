@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface BorrowRecordRepository extends JpaRepository<BorrowRecord, Long> {
 
@@ -14,6 +15,11 @@ public interface BorrowRecordRepository extends JpaRepository<BorrowRecord, Long
 
     // Search by book title via JPQL join
     @Query("SELECT br FROM BorrowRecord br JOIN br.book b " +
-           "WHERE LOWER(b.title) LIKE LOWER(CONCAT('%', :title, '%'))")
+            "WHERE LOWER(b.title) LIKE LOWER(CONCAT('%', :title, '%'))")
     List<BorrowRecord> findByBookTitleContainingIgnoreCase(@Param("title") String title);
+
+    // Search by exact book title via JPQL join
+    @Query("SELECT br FROM BorrowRecord br JOIN br.book b " +
+            "WHERE LOWER(b.title) LIKE LOWER(CONCAT('%', :title, '%'))")
+    Optional<BorrowRecord> findByBookTitleIgnoreCase(@Param("title") String title);
 }
