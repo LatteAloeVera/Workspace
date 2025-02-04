@@ -26,7 +26,7 @@ public class AuthorController {
     @Autowired
     private AuthorService authorService;
 
-    @GetMapping()
+    @GetMapping
     public ResponseEntity<List<Author>> getAllAuthors() {
         return ResponseEntity.ok(authorService.getAllAuthors());
     }

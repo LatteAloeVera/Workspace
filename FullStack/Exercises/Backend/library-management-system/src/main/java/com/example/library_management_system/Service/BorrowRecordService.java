@@ -24,6 +24,11 @@ public class BorrowRecordService {
         return borrowRecordRepository.findAll();
     }
 
+    public BorrowRecord getBorrowRecordById(Long id) {
+        return borrowRecordRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Couldn't find any book with id: " + id + " "));
+    }
+
     public BorrowRecord borrowBook(BorrowRecord record) {
         Book book = bookService.getBookById(record.getId());
 
@@ -57,7 +62,28 @@ public class BorrowRecordService {
         return borrowRecordRepository.save(borrowRecord);
     }
 
-    List<BorrowRecord> searchRecords(String borrowerName, String bookTitle) {
+    public BorrowRecord updateBorrowRecord(Long id, BorrowRecord recordDetails) {
+        BorrowRecord existingRecord = getBorrowRecordById(id);
+
+        // Checking if book exists with the given title
+        if (!existingRecord.getBook().getTitle().equalsIgnoreCase(recordDetails.getBook().getTitle())) {
+            borrowRecordRepository.findByBookTitleIgnoreCase(recordDetails.getBook().getTitle())
+                    .ifPresent(book -> {
+                        throw new DuplicateEntryException(
+                                "Borrow record with book " + recordDetails.getBook().getTitle() + " already exists");
+                    });
+        }
+
+        existingRecord.setBook(recordDetails.getBook());
+        existingRecord.setBorrowDate(recordDetails.getBorrowDate());
+        existingRecord.setBorrowerName(recordDetails.getBorrowerName());
+        existingRecord.setReturnDate(recordDetails.getReturnDate());
+        existingRecord.setReturned(recordDetails.isReturned());
+
+        return borrowRecordRepository.save(existingRecord);
+    }
+
+    public List<BorrowRecord> searchRecords(String borrowerName, String bookTitle) {
         // if both provided
         if (borrowerName != null && !borrowerName.isEmpty() && bookTitle != null && !bookTitle.isEmpty()) {
             return borrowRecordRepository.findByBorrowerNameContainingIgnoreCase(borrowerName)
