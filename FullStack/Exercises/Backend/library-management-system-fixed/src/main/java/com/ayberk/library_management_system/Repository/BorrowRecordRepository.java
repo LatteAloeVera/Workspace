@@ -1,6 +1,6 @@
-package com.example.library_management_system.Repository;
+package com.ayberk.library_management_system.Repository;
 
-import com.example.library_management_system.Model.BorrowRecord;
+import com.ayberk.library_management_system.Model.BorrowRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

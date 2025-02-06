@@ -1,14 +1,14 @@
-package com.example.library_management_system.Service;
+package com.ayberk.library_management_system.Service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.library_management_system.Exceptions.DuplicateEntryException;
-import com.example.library_management_system.Exceptions.EntityNotFoundException;
-import com.example.library_management_system.Model.Author;
-import com.example.library_management_system.Repository.AuthorRepository;
+import com.ayberk.library_management_system.Exceptions.DuplicateEntryException;
+import com.ayberk.library_management_system.Exceptions.EntityNotFoundException;
+import com.ayberk.library_management_system.Model.Author;
+import com.ayberk.library_management_system.Repository.AuthorRepository;
 
 @Service
 public class AuthorService {
