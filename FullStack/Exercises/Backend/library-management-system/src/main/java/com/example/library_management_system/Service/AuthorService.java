@@ -41,7 +41,8 @@ public class AuthorService {
         if (!authorDetails.getName().equalsIgnoreCase(existingAuthor.getName())) {
             authorRepository.findByNameIgnoreCase(authorDetails.getName())
                 .ifPresent(author -> {
-                    throw new DuplicateEntryException("Author with name " + authorDetails.getName() + " already exists");
+                        throw new DuplicateEntryException(
+                                "Author with name " + authorDetails.getName() + " already exists");
                 });
         }
 
@@ -71,7 +72,7 @@ public class AuthorService {
         }
 
         // If only nationality provided
-        if(nationality != null && !nationality.isEmpty()) {
+        if (nationality != null && !nationality.isEmpty()) {
             return authorRepository.findByNationalityIgnoreCase(nationality);
         }
 
