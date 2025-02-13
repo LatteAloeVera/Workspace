@@ -25,6 +25,9 @@ public class Book {
     @Column
     private boolean isBorrowed;
 
+    public Book() {
+    }
+
     public Book(String title, String author, boolean isBorrowed) {
         this.title = title;
         this.author = author;

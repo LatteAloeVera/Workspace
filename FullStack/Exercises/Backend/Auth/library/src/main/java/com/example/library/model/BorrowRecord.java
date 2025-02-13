@@ -8,9 +8,11 @@ import org.springframework.cglib.core.Local;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
@@ -25,12 +27,14 @@ public class BorrowRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // A User can have many borrow records, but each borrow record is associated with one User.
-    @ManyToOne
+    // Many records can reference the same user
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    // A Book can have many borrow records, but each borrow record is associated with one Book.
-    @OneToOne
+    // Many records can reference the same book
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id")
     private Book book;
 
     private LocalDateTime borrowedAt;

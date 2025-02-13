@@ -1,11 +1,12 @@
 package com.example.library.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
-
 import com.example.library.model.User;
 import com.example.library.repository.UserRepository;
+import com.example.library.security.JwtUtil;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
 @Service
 public class AuthService {
@@ -13,28 +14,22 @@ public class AuthService {
     UserRepository userRepository;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    private JwtUtil jwtUtil;
+    JwtUtil jwtUtil;
 
-
-    public String register(User user){
+    public void register(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
-        return "User registered successfully";
     }
 
-    public String login(String username, String password){
-        User existingUser = userRepository.findByUsername(username)
-            .orElseThrow(() -> new RuntimeException("User not found"));
-
-        // Verify password
-        if(!passwordEncoder.matches(password, existingUser.getPassword())){
-            throw new RuntimeException("Password mismatch");
+    public String login(String username, String password) {
+        User user = userRepository.findByUsername(username);
+        if (user != null && passwordEncoder.matches(password, user.getPassword()) ) {
+            return jwtUtil.generateToken(user.getUsername(), user.getRole().name());
         }
-
-        // Generate JWT
-        return jwtUtil.generateToken(existingUser.getUsername(), existingUser.getRole().name());
+        return null;
     }
+
 }
