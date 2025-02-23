@@ -31,11 +31,12 @@ public class BookControllerNew {
         return "Book added successfully!";
     }
     
-    @PreAuthorize("hasAuthority('ADMIN','USER')")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
     @GetMapping("/list")
     public List<Book> listBooks() {
         return bookService.listBooks();
     }
+
     
 
 }

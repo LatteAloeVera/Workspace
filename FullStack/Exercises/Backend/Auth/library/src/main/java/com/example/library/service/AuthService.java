@@ -6,18 +6,20 @@ import com.example.library.security.JwtUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthService {
-    @Autowired
-    UserRepository userRepository;
+
+    private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    BCryptPasswordEncoder passwordEncoder;
-
-    @Autowired
-    JwtUtil jwtUtil;
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public void register(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
@@ -26,10 +28,9 @@ public class AuthService {
 
     public User login(String username, String password) {
         User user = userRepository.findByUsername(username);
-        if (user != null && passwordEncoder.matches(password, user.getPassword()) ) {
+        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
             return user;
         }
         return null;
     }
-
 }
