@@ -24,10 +24,10 @@ public class AuthService {
         userRepository.save(user);
     }
 
-    public String login(String username, String password) {
+    public User login(String username, String password) {
         User user = userRepository.findByUsername(username);
         if (user != null && passwordEncoder.matches(password, user.getPassword()) ) {
-            return jwtUtil.generateToken(user.getUsername(), user.getRole().name());
+            return user;
         }
         return null;
     }
