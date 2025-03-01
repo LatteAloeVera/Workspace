@@ -11,6 +11,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.example.library.model.User;
+import com.example.library.repository.UserRepository;
+
 import java.io.IOException;
 import java.util.Collections;
 
@@ -19,6 +22,9 @@ public class JwtFilter extends OncePerRequestFilter{
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Autowired CustomUserDetailsService userDetailsService;
 
@@ -38,7 +44,11 @@ public class JwtFilter extends OncePerRequestFilter{
                 UsernamePasswordAuthenticationToken authToken = 
                     new UsernamePasswordAuthenticationToken(userDetails, null, Collections.singleton(() -> role));
 
-                request.setAttribute("userId", userDetails);
+                // Instead of request.setAttribute("userId", userDetails):
+                User userEntity = userRepository.findByUsername(username);
+                if (userEntity != null) {
+                    request.setAttribute("userId", userEntity.getId());
+                }
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }

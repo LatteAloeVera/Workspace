@@ -47,6 +47,7 @@ public class BorrowService {
         newRecord.setBook(b);
         newRecord.setUser(u);
         newRecord.setBorrowedAt(LocalDateTime.now());
+        b.setBorrowed(true);
 
         borrowRepository.save(newRecord);
         return "Book borrowed successfully!";
@@ -73,6 +74,7 @@ public class BorrowService {
         }
         BorrowRecord updatedRecord = borrowRecord.get();
 
+        b.setBorrowed(false);
         updatedRecord.setReturnedAt(LocalDateTime.now());
         borrowRepository.save(updatedRecord);
         return "Book returned successfully!";

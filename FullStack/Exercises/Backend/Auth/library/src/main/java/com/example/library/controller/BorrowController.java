@@ -16,15 +16,13 @@ public class BorrowController {
 
     @PreAuthorize("hasAuthority('USER')")
     @PostMapping("/{bookId}")
-    public String borrowBook(@RequestHeader Long bookId, @RequestAttribute Object princible) {
-        Long userId = (Long) princible;
+    public String borrowBook(@PathVariable Long bookId, @RequestAttribute("userId") Long userId) {
         return borrowService.borrowBook(userId, bookId);
     }
 
     @PreAuthorize("hasAuthority('USER')")
     @PostMapping("/return/{bookId}")
-    public String postMethodName(@RequestHeader Long bookId, @RequestAttribute Object princible) {
-        Long userId = (Long) princible;
+    public String returnBook(@PathVariable Long bookId, @RequestAttribute("userId") Long userId) {
         return borrowService.returnBook(userId, bookId);
     }
 
