@@ -1,7 +1,10 @@
+import java.util.HashMap;
+import java.util.List;
+import java.lang.System;
+
 public class Main {
     public static void main(String[] args) {
-        Integer x = 10;
-        String t = "ayberk";
-        System.out.println(x);
+        ListNode test = new ListNode();
+        System.out.println("answer:" + test.val);
     }
 }

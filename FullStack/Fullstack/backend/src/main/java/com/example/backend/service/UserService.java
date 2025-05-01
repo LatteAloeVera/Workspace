@@ -61,16 +61,37 @@ public class UserService {
 
     // --- Update ------------------------------------------------------------
     public UserResponse updateUser(Long id, RegisterRequest req, String requester) {
+        User user = userRepository.findById(id).orElseThrow(() -> new NoSuchElementException("User not found"));
+        ensureSelf(user, requester);
+        
+        userRepository.findByUsername(req.getUsername()).filter(u -> !u.getId().equals(user.getId())).ifPresent(u -> {
+            throw new IllegalStateException("Username already taken");
+        });
 
+        userRepository.findByEmail(req.getEmail()).filter(u -> !u.getId().equals(user.getId())).ifPresent(u -> {
+            throw new IllegalStateException("Email already taken");
+        });
+        
+        user.setUsername(req.getUsername());
+        user.setEmail(req.getEmail());
+        if (req.getPassword() != null && !req.getPassword().isEmpty()) {
+            user.setPassword(passwordEncoder.encode(req.getPassword()));
+        }
+        User updated = userRepository.save(user);
+        return new UserResponse(updated.getId(), updated.getUsername(), updated.getEmail());
     }
 
     // --- Delete ------------------------------------------------------------
     public void deleteUser(Long id, String requester) {
-
+        User user = userRepository.findById(id).orElseThrow(() -> new NoSuchElementException("User not found"));
+        ensureSelf(user, requester);
+        userRepository.delete(user);
     }
 
     private void ensureSelf(User user, String requester) {
-
+        if (!user.getUsername().equals(requester)) {
+            throw new AccessDeniedException("You are not allowed to access this resource");
+        }
     }
 
 }
