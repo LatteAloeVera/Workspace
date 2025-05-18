@@ -1,0 +1,78 @@
+/* --- Layout Basics --- */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #f5f7fb;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* --- Containers --- */
+.card {
+  background: #fff;
+  margin-top: 4rem;
+  padding: 2rem 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,.07);
+  width: 90%;
+  max-width: 450px;
+}
+.title { margin: 0 0 1.5rem; text-align: center; }
+
+/* --- Tabs --- */
+.tabs {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: 1.5rem;
+}
+.tab {
+  flex: 1;
+  padding: .65rem 0;
+  border: none;
+  background: #e9ecef;
+  cursor: pointer;
+  border-radius: .5rem;
+  font-weight: 600;
+}
+.tab.active { background: #0069ed; color: #fff; }
+
+/* --- Forms --- */
+form { display: flex; flex-direction: column; gap: 1rem; }
+label { display: flex; flex-direction: column; font-weight: 500; }
+input {
+  margin-top: .35rem;
+  padding: .6rem .75rem;
+  border: 1px solid #ced4da;
+  border-radius: .5rem;
+  font-size: 1rem;
+}
+button {
+  padding: .7rem 1rem;
+  border: none;
+  border-radius: .5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.primary { background: #0069ed; color: #fff; }
+.danger  { background: #e03131; color: #fff; }
+.full    { width: 100%; }
+.note    { font-size: .9rem; color: #555; margin-top: -.5rem; }
+
+.msg { font-size: .9rem; min-height: 1.2rem; }
+.hidden { display: none; }
+
+/* --- Dashboard Nav --- */
+.nav {
+  width: 100%;
+  background: #0069ed;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+hr { border: none; border-top: 1px solid #e5e5e5; margin: 2rem 0; }

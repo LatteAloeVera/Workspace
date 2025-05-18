@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Management — Login / Register</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <main class="card">
+
+    <h1 class="title">User Management Demo</h1>
+
+    <!-- Toggle Buttons -->
+    <div class="tabs">
+      <button id="show-login"  class="tab active">Login</button>
+      <button id="show-register" class="tab">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="login-form" autocomplete="off">
+      <label>Username
+        <input type="text" id="login-username" required>
+      </label>
+
+      <label>Password
+        <input type="password" id="login-password" required>
+      </label>
+
+      <button type="submit" class="primary">Login</button>
+      <p class="note">No account yet? Click <strong>Register</strong>.</p>
+      <p id="login-msg" class="msg"></p>
+    </form>
+
+    <!-- Registration Form -->
+    <form id="register-form" class="hidden" autocomplete="off">
+      <label>Username
+        <input type="text" id="reg-username" required>
+      </label>
+
+      <label>Email
+        <input type="email" id="reg-email" required>
+      </label>
+
+      <label>Password
+        <input type="password" id="reg-password" required>
+      </label>
+
+      <button type="submit" class="primary">Create Account</button>
+      <p class="note">Already have an account? Click <strong>Login</strong>.</p>
+      <p id="reg-msg" class="msg"></p>
+    </form>
+
+  </main>
+
+  <script src="js/auth.js" defer></script>
+</body>
+</html>

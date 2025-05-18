@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <header class="nav">
+    <h2 id="welcome">Dashboard</h2>
+    <button id="logout" class="danger">Logout</button>
+  </header>
+
+  <section class="card">
+
+    <!-- Profile read-only -->
+    <div id="profile-view">
+      <h3>Your Profile</h3>
+      <p><strong>ID:</strong> <span id="user-id"></span></p>
+      <p><strong>Username:</strong> <span id="user-name"></span></p>
+      <p><strong>Email:</strong> <span id="user-email"></span></p>
+    </div>
+
+    <hr>
+
+    <!-- Update form -->
+    <h3>Update Info</h3>
+    <form id="update-form" autocomplete="off">
+      <label>Username
+        <input type="text" id="upd-username" required>
+      </label>
+
+      <label>Email
+        <input type="email" id="upd-email" required>
+      </label>
+
+      <label>New Password (optional)
+        <input type="password" id="upd-password">
+      </label>
+
+      <button type="submit" class="primary">Save Changes</button>
+      <p id="upd-msg" class="msg"></p>
+    </form>
+
+    <hr>
+
+    <!-- Delete account -->
+    <h3>Danger Zone</h3>
+    <button id="delete-btn" class="danger full">Delete Account (permanent)</button>
+    <p id="del-msg" class="msg"></p>
+
+  </section>
+
+  <script src="js/dashboard.js" defer></script>
+</body>
+</html>
